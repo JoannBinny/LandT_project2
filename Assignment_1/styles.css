@@ -1,0 +1,122 @@
+/* Dark/light + accent system */
+:root{
+  --bg:#0f1420;
+  --surface:#151c2f;
+  --border:#293657;
+  --text:#e8eefc;
+  --muted:#9aa6cb;
+  --accent:#6366f1;
+  --chip:#1f2a44;
+  --paper:#0b1120;
+}
+html[data-theme="light"]{
+  --bg:#ffffff;
+  --surface:#f7f8fb;
+  --border:#e2e6ef;
+  --text:#0a0f1e;
+  --muted:#4b5670;
+  --paper:#ffffff;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Chrome */
+.app-header{ background:var(--surface); border-bottom:1px solid var(--border); }
+.app-title{ font-size:1.2rem; font-weight:800; letter-spacing:.2px; }
+.header-controls .form-select,.header-controls .form-control-color{ min-width: 120px; }
+
+.card-panel{ background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:18px; }
+.panel-title{ margin-bottom:12px; font-weight:700; }
+
+.form-label{ color:var(--muted); }
+.form-control,.form-select,.btn{ border-radius:10px; }
+.small-muted{ color:var(--muted); }
+
+/* Preview */
+.resume-preview{
+  background:var(--paper);
+  border:1px dashed var(--border);
+  border-radius:16px; padding:28px;
+  min-height: 320px;
+  position: relative;
+}
+
+/* super-light sample overlay for empty preview */
+.preview-empty-hint{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--muted);
+  opacity:.25; pointer-events:none; text-align:center;
+  padding:10px 16px; font-size:.95rem;
+}
+
+.score-chip{ background: var(--chip); border:1px solid var(--border); padding:.15rem .5rem; border-radius:999px; }
+
+/* Resume blocks */
+.styled-resume .resume-header{ border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:14px; }
+.styled-resume .resume-name{ font-size:1.6rem; font-weight:900; letter-spacing:.2px; margin:0; }
+.styled-resume .resume-role{ font-weight:700; color:var(--accent); }
+.styled-resume .contact-line{ color:var(--muted); }
+.section-title{ font-size:1.05rem; font-weight:800; margin:16px 0 8px; color:var(--accent); }
+.section-item{ margin-bottom:10px; }
+.section-item .title{ font-weight:700; }
+.section-item .meta{ color:var(--muted); font-size:.95rem; }
+
+/* Avatar */
+.resume-avatar{ width:90px; height:90px; object-fit:cover; border-radius:999px; border:2px solid var(--accent); }
+
+/* Templates */
+.template-compact .styled-resume .resume-name{ font-size:1.35rem; }
+.template-compact .section-title{ margin:12px 0 6px; }
+
+.template-executive .styled-resume .resume-header{
+  border-bottom:3px solid var(--accent);
+  display:flex; align-items:center; gap:16px;
+}
+.template-executive .styled-resume .resume-role{ color:var(--text); opacity:.85; font-weight:600; }
+
+/* Skill/Lang Meters */
+.meter{
+  width:100%;
+  height:10px;
+  background:transparent;
+  border:1px solid var(--border);
+  border-radius:999px;
+  overflow:hidden;
+}
+.meter-fill{
+  height:100%;
+  width:0;                    /* start collapsed */
+  background:var(--accent);
+  transition: width .9s ease; /* smoother animation */
+  will-change: width;
+}
+
+/* Respect OS reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .meter-fill{ transition:none; }
+}
+/* ATS Mode (text-only) */
+.ats-mode .resume-preview{ background:#fff !important; color:#000 !important; border-color:#000 !important; }
+.ats-mode .styled-resume .resume-header{ border-color:#000 !important; }
+.ats-mode .section-title{ color:#000 !important; }
+.ats-mode a{ color:#000 !important; text-decoration: none; }
+.ats-mode .resume-avatar{ display:none !important; }
+.ats-mode .contact-line .link-url{ display:inline !important; }
+.ats-mode .meter{ display:none !important; }          /* hide visual meters */
+.ats-mode .skill-val, .ats-mode .lang-val{ display:inline !important; } /* show percent text clearly */
+
+/* Photo picker thumbnail */
+.avatar-thumb{ width:72px; height:72px; border-radius:999px; object-fit:cover; border:1px solid var(--border); }
+
+/* Print */
+@media print{
+  .app-header, .card-panel .panel-title, .btn, .input-group, .form-check, .form-control, .form-select { display:none !important; }
+  body{ background:#fff; color:#000; }
+  .resume-preview{ border:none; padding:0; }
+}
