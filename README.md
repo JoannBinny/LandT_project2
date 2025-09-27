@@ -1,6 +1,6 @@
 # L&T Front End UI/UX Course
 # LandT_project2
-<h3> HTML-CSS Mini Project</h3>
+<h3> HTML-CSS(with js and bootstrap) Mini Project</h3>
 <h4> Submitted by:</h4>
 <ul>
 	<li>Joann Binny (2462088)</li>
