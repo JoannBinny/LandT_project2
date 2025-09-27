@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holiday Planner</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="hero">
+    <h1>🌍 Plan Your Perfect Holiday</h1>
+    <p>Discover, plan, and save your dream trips with ease.</p>
+  </div>
+
+  <section id="suggestions">
+    <div class="container">
+      <h2 class="text-center mb-4">Travel Suggestions</h2>
+      <div class="row" id="suggestionsList"></div>
+    </div>
+  </section>
+
+  <section id="planner">
+    <div class="container">
+      <h2 class="text-center mb-4">Plan a Trip</h2>
+      <form id="tripForm" class="mb-4">
+        <div class="mb-3"><input type="text" class="form-control" id="destination" placeholder="Destination" required></div>
+        <div class="mb-3"><input type="number" class="form-control" id="plannedBudget" placeholder="Planned Budget" required></div>
+        <div class="mb-3"><input type="number" class="form-control" id="amountSpent" placeholder="Amount Spent"></div>
+        <div class="mb-3"><input type="text" class="form-control" id="members" placeholder="Members (comma-separated)"></div>
+        <div class="mb-3"><textarea class="form-control" id="note" placeholder="Add a note"></textarea></div>
+        <button type="submit" class="btn btn-primary">Save Trip</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="savedTrips">
+    <div class="container">
+      <h2 class="text-center mb-4">Saved Trips</h2>
+      <div id="tripsList" class="row"></div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    const suggestions = [
+      {name:"Beach Paradise", mood:"Relaxation", img:"https://source.unsplash.com/300x200/?beach"},
+      {name:"Mountain Adventure", mood:"Adventure", img:"https://source.unsplash.com/300x200/?mountain"},
+      {name:"City Lights", mood:"Urban", img:"https://source.unsplash.com/300x200/?city"},
+      {name:"Forest Retreat", mood:"Nature", img:"https://source.unsplash.com/300x200/?forest"},
+      {name:"Desert Safari", mood:"Adventure", img:"https://source.unsplash.com/300x200/?desert"},
+      {name:"Island Escape", mood:"Relaxation", img:"https://source.unsplash.com/300x200/?island"}
+    ];
+
+    const container = document.getElementById("suggestionsList");
+    suggestions.forEach(s => {
+      const card = document.createElement("div");
+      card.className = "col-md-4 mb-3";
+      card.innerHTML = `<div class="card h-100">
+        <img src="${s.img}" class="card-img-top" alt="${s.name}">
+        <div class="card-body">
+          <h5 class="card-title">${s.name}</h5>
+          <p class="card-text">Mood: ${s.mood}</p>
+        </div>
+      </div>`;
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
